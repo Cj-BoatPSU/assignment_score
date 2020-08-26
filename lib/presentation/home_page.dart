@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 
 class Homepage extends StatelessWidget {
   @override
-  Widget build(BuildContext c)
-  
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home'),
+      ),
+      body: Center(
+        child: Text('Hello World'),
+      ),
+      
+    );
+  }
 }
