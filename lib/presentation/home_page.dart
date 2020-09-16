@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:assigement_1/config/routes.dart';
-import 'package:assigement_1/presentation/show_page.dart';
+import 'package:flutter_app_new/config/routes.dart';
+import 'package:flutter_app_new/presentation/show_page.dart';
 
 List<Map> persons = [
   {"name": "JJ", "score": "80"},
