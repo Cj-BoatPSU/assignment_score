@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:assigement_1/persons.dart';
 import 'package:assigement_1/presentation/edit_page.dart';
-import 'package:assigement_1/config/routes.dart';
+//import 'package:assigement_1/config/routes.dart';
 
 class ComparePageParameter {
   final List <Persons> personslist;
@@ -23,11 +23,13 @@ class ComparePageScreen extends StatefulWidget {
 class _ComparePageScreenState extends State<ComparePageScreen> {
   List <Persons> _personslist;
   Persons _thisperson;
+  Persons _nextperson;
   //int _personslength;
   @override
   void initState() {
     _personslist = widget.personslist;
     _thisperson = widget.thisperson;
+    _nextperson = widget.nextperson;
   // _personslength = widget.personslist.length;
     super.initState();
   }
@@ -86,12 +88,12 @@ class _ComparePageScreenState extends State<ComparePageScreen> {
                             fontSize: 40, fontWeight: FontWeight.bold),
                       ),
                       ListTile(
-                        leading: Text("${widget.nextperson.index}",
+                        leading: Text("${_nextperson.index}",
                             style: TextStyle(fontSize: 25)),
-                        title: Text(widget.nextperson.name,
+                        title: Text(_nextperson.name,
                             style: TextStyle(fontSize: 25)),
                         trailing: Text(
-                          "${widget.nextperson.score}",
+                          "${_nextperson.score}",
                           style: TextStyle(
                               fontSize: 40, fontWeight: FontWeight.bold),
                         ),
@@ -109,8 +111,22 @@ class _ComparePageScreenState extends State<ComparePageScreen> {
     );
     setState(() {
       _thisperson = editPersonslist;
-      _personslist.add(editPersonslist);
+      _personslist[_thisperson.index] = _thisperson;
+      _nextperson = findNextPerson(_thisperson, _personslist);
     });
   }
 
 }
+
+Persons findNextPerson(Persons thisperson, List<Persons> personslist){
+    List<Persons> personslistsort;
+    personslistsort = List.from(personslist);
+    personslistsort.sort((a, b) => a.score.compareTo(b.score));
+     for(int i = 0 ; i < personslistsort.length ; i++){
+          if( thisperson.score < personslistsort[i].score){
+              return personslistsort[i];
+          }
+           
+      }
+    return thisperson;
+ }

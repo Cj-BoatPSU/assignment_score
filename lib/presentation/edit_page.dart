@@ -25,6 +25,7 @@ class _EditPageScreenState extends State<EditPageScreen> {
     answer = "${widget.thisperson.score}";
     newperson = widget.thisperson;
     _textController = TextEditingController();
+    _textController.text = newperson.name;
     super.initState();
   }
   @override
@@ -44,8 +45,7 @@ class _EditPageScreenState extends State<EditPageScreen> {
   }
 
  Widget buildTextField(){
-   
-    _textController.text = widget.thisperson.name;
+    //_textController.text = widget.thisperson.name;
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Row(
@@ -143,9 +143,10 @@ class _EditPageScreenState extends State<EditPageScreen> {
 
 
   void editToPerson() {
-    
+    String _name = _textController.text;
     setState(() {
-      newperson = Persons(indexperson, _textController.text, int.parse(answer));
+     // _textController = 
+      newperson = Persons(indexperson, _name, int.parse(answer));
     });
     print("${newperson.score}");
     Navigator.pop(context, newperson);

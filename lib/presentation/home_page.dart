@@ -53,8 +53,12 @@ class _HomePageScreenState extends State<HomePageScreen> {
       leading: Text("${personslist[index].index}",style: TextStyle(fontSize: 25,)),
       title: Text("${personslist[index].name}", style: TextStyle(fontSize: 25,)),
       trailing: Text("${personslist[index].score}",style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
-      onTap: () => {Navigator.of(context)
-                    .pushNamed(AppRoutes.compare, arguments: ComparePageParameter(personslist, personslist[index], findNextPerson(personslist[index], personslist)))},
+      onTap: () => {
+        Navigator.of(context)
+                    .pushNamed(AppRoutes.compare, 
+                    arguments: ComparePageParameter(personslist, personslist[index], findNextPerson(personslist[index], personslist))),
+        //editPersonToList(context, index)
+                    },
     );
     
   }
@@ -62,9 +66,21 @@ class _HomePageScreenState extends State<HomePageScreen> {
     final Persons addpersonslist = await Navigator.push( context,
     MaterialPageRoute(builder: (context) => AddPersonPageScreen(personslist.length))
     );
+  if(addpersonslist != null){
     setState(() {
       personslist.add(addpersonslist);
     });
+   }
+  }
+  void editPersonToList(BuildContext context, int index) async {
+    final Persons editPersonslist = await Navigator.push( context,
+    MaterialPageRoute(builder: (context) => ComparePageScreen(personslist, personslist[index], findNextPerson(personslist[index], personslist)))
+    );
+    if( editPersonslist != null){
+    setState(() {
+      personslist[editPersonslist.index-1] = editPersonslist;
+    });
+    }
   }
   
 }
