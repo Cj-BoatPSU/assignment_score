@@ -32,8 +32,10 @@ class _AddPersonPageScreenState extends State<AddPersonPageScreen> {
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text("Add persons"),
+        backgroundColor: Color(0xff900c3f),
       ),
       body: Container(
+        color: Color(0xff581845),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[buildTextField(), buildAnswerWidget(), buildNumPadWidget()],
@@ -43,9 +45,8 @@ class _AddPersonPageScreenState extends State<AddPersonPageScreen> {
   }
 
  Widget buildTextField(){
-   
- 
     return Container(
+      color: Color(0xffff5733),
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Row(
         mainAxisAlignment : MainAxisAlignment.center,
@@ -67,19 +68,20 @@ class _AddPersonPageScreenState extends State<AddPersonPageScreen> {
     return Container(
       //  constraints: BoxConstraints.expand(height: 90),
         padding: EdgeInsets.all(10),
-        color: Colors.blue[300],
+        color: Color(0xffff5733),
         child: Align(
             alignment: Alignment.center,
             child: Column(crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min, children: <Widget>[
-                  Text(answer,
+                  Text("Score : "+answer,
                       style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold))
                 ])));
   }
 
   Widget buildNumPadWidget() {
     return Container(
-        color: Color(0xffdbdbdb),
+        margin: EdgeInsets.only(top : 20),
+        color: Color(0xff581845),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
@@ -171,7 +173,7 @@ class _AddPersonPageScreenState extends State<AddPersonPageScreen> {
     widget = Container(
         margin: EdgeInsets.all(10),
         child: Material(
-            color: Colors.white,
+            color: Color(0xffffc300),
             child: InkWell(
                 onTap: onTap, highlightColor: Colors.blue[300],
                 child: Container(
@@ -179,7 +181,7 @@ class _AddPersonPageScreenState extends State<AddPersonPageScreen> {
                     child: Center(
                         child: Text(str,
                             style: TextStyle(
-                                fontSize: 32, fontWeight: FontWeight.bold)))))));
+                                fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black)))))));
     return Expanded(child: widget);
   }
 

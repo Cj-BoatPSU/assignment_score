@@ -14,15 +14,18 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: 'Chewy', brightness: Brightness.light, backgroundColor: Color(0xfffc2003)),
       title: 'Navigator',
       initialRoute: '/',
        routes: {
          '/': (context) => HomePageScreen(),
+         //'/': (context) => Home2PageScreen(),
        },
       onGenerateRoute: _registerRWP,
     );
   }
 
+  // ignore: missing_return
   Route _registerRWP(RouteSettings settings){
     if(settings.name == AppRoutes.compare){
       return MaterialPageRoute(builder: (context){

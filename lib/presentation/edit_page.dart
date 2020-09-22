@@ -34,8 +34,10 @@ class _EditPageScreenState extends State<EditPageScreen> {
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text("Edit persons"),
+        backgroundColor: Color(0xff900c3f),
       ),
       body: Container(
+        color: Color(0xff581845),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[buildTextField(), buildAnswerWidget(), buildNumPadWidget()],
@@ -45,8 +47,8 @@ class _EditPageScreenState extends State<EditPageScreen> {
   }
 
  Widget buildTextField(){
-    //_textController.text = widget.thisperson.name;
     return Container(
+      color: Color(0xffff5733),
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Row(
         mainAxisAlignment : MainAxisAlignment.center,
@@ -64,21 +66,21 @@ class _EditPageScreenState extends State<EditPageScreen> {
 
   Widget buildAnswerWidget() {
     return Container(
-      //  constraints: BoxConstraints.expand(height: 90),
+        color: Color(0xffff5733),
         padding: EdgeInsets.all(10),
-        color: Colors.blue[300],
         child: Align(
             alignment: Alignment.center,
             child: Column(crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min, children: <Widget>[
-                  Text(answer,
+                  Text("Score : "+answer,
                       style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold))
                 ])));
   }
 
   Widget buildNumPadWidget() {
     return Container(
-        color: Color(0xffdbdbdb),
+       margin: EdgeInsets.only(top : 20),
+       color: Color(0xff581845),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
@@ -145,10 +147,8 @@ class _EditPageScreenState extends State<EditPageScreen> {
   void editToPerson() {
     String _name = _textController.text;
     setState(() {
-     // _textController = 
       newperson = Persons(indexperson, _name, int.parse(answer));
     });
-    print("${newperson.score}");
     Navigator.pop(context, newperson);
   }
 
@@ -171,7 +171,7 @@ class _EditPageScreenState extends State<EditPageScreen> {
     widget = Container(
         margin: EdgeInsets.all(10),
         child: Material(
-            color: Colors.white,
+            color: Color(0xffffc300),
             child: InkWell(
                 onTap: onTap, highlightColor: Colors.blue[300],
                 child: Container(
